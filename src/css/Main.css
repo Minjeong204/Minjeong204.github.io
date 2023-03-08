@@ -1,0 +1,12 @@
+a{
+    cursor: pointer;
+    text-decoration: none;
+    color: #BB2649;
+}
+
+.main li{
+    border: none;
+    display: inline-block;
+    width: 170px;
+    text-align: left;
+}

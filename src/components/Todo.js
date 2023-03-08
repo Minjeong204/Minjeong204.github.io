@@ -10,7 +10,6 @@ export default function TodoList() {
 
   const trash = <FontAwesomeIcon icon={faTrashCan} />;
 
-  console.log(todolist);
 
   const todolistView = todolist.map((todo, idx) => (
     <li className="list" key={todolist[idx].id}>
@@ -20,20 +19,22 @@ export default function TodoList() {
         onChange={() => dispatch(complete(todolist[idx].id))}
       ></input>
       <div className="todolist">
-        {todo.complete === false ? <>{todo.text}</> : <del>{todo.text}</del>}
+        <span className="todoContent">
+          {todo.complete === false ? <>{todo.text}</> : <del>{todo.text}</del>}{" "}
+          <button
+            className="deleteBtn"
+            type="button"
+            onClick={() => dispatch(remove(todolist[idx].id))}
+          >
+            {trash}
+          </button>
+        </span>
       </div>
-      <button
-        className="deleteBtn"
-        type="button"
-        onClick={() => dispatch(remove(todolist[idx].id))}
-      >
-        {trash}
-      </button>
     </li>
   ));
   return (
     <>
-      <ul>{todolistView}</ul>
+      <ul className="todoUl">{todolistView}</ul>
     </>
   );
 }
