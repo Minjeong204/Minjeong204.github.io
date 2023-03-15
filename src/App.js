@@ -6,13 +6,16 @@ import InputTodo from "./components/InputTodo";
 import NotFound from "./components/NotFound";
 import Main from "./components/Main";
 import Header from "./components/Header";
+import Member from "./components/Member";
 
 function App() {
+  
   return (
     <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Main />}></Route>
+        <Route path="/axios" element={<Member />}></Route>
         <Route path="/count" element={<Counter />}></Route>
         <Route path="/clock" element={<Clock />}></Route>
         <Route path="/todo" element={<InputTodo />}></Route>

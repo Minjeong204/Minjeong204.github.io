@@ -7,7 +7,7 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="like">
       <p>♥ {count}</p>
       <button onClick={() => dispatch(plus())}>좋아요</button>
       <button onClick={() => dispatch(minus())}>싫어요</button>

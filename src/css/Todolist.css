@@ -1,7 +1,7 @@
-input[type=text]{
-    width: 150px;
+.textbar{
+    width: 250px;
     height: 32px;
-    font-size: 12px;
+    font-size: 14px;
     border: 0;
     border-radius: 15px;
     outline: none;
@@ -398,7 +398,7 @@ button[class*="btn"] {border: 0;}
 .todoContent{
     display: block;
     margin-left: 30px;
-    font-size: 12px;
+    font-size: 18px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -408,7 +408,7 @@ button[class*="btn"] {border: 0;}
 }
 .list{
     list-style: none;
-    width: 190px;
+    width: 280px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 8px;

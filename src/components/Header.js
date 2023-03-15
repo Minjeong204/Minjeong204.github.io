@@ -25,6 +25,11 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/axios" className="nav-link">
+                axios
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link to="/clock" className="nav-link">
                 시계
               </Link>
