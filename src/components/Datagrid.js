@@ -28,7 +28,6 @@ const Data = () => {
       });
   };
   const editing = () => {
-    const ids = apiRef.current.instance.getSelectedRowKeys();
     const data = apiRef.current.instance.getSelectedRowsData();
     console.log(data[0]);
     request

@@ -44,10 +44,6 @@ export default function DataTable() {
     width: 400,
     p: 4,
   };
-  const buttons = {
-    marginLeft: 10,
-    p: 4,
-  };
 
   return (
     <div
