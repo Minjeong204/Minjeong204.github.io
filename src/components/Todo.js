@@ -1,22 +1,16 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { remove, complete } from "../redux/todoSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-export default function TodoList() {
-  const todolist = useSelector((state) => state.todo);
-  const dispatch = useDispatch();
-
-  const trash = <FontAwesomeIcon icon={faTrashCan} />;
-
-
-  const todolistView = todolist.map((todo, idx) => (
-    <li className="list" key={todolist[idx].id}>
+const TodoItem = React.memo(({ todo, onToggleComplete, onRemove }) => {
+  return (
+    <li className="list" key={todo.id}>
       <input
         className="checkbox"
         type="checkbox"
-        onChange={() => dispatch(complete(todolist[idx].id))}
+        onChange={() => onToggleComplete(todo.id)}
       ></input>
       <div className="todolist">
         <span className="todoContent">
@@ -24,17 +18,44 @@ export default function TodoList() {
           <button
             className="deleteBtn"
             type="button"
-            onClick={() => dispatch(remove(todolist[idx].id))}
+            onClick={() => onRemove(todo.id)}
           >
-            {trash}
+            <FontAwesomeIcon icon={faTrashAlt} />
           </button>
         </span>
       </div>
     </li>
-  ));
-  return (
-    <>
-      <ul className="todoUl">{todolistView}</ul>
-    </>
   );
-}
+});
+
+const TodoList = () => {
+  const todolist = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
+
+  const handleToggleComplete = useCallback(
+    (id) => {
+      dispatch(complete(id));
+    },
+    [dispatch]
+  );
+
+  const handleRemove = useCallback(
+    (id) => {
+      dispatch(remove(id));
+    },
+    [dispatch]
+  );
+
+  const todolistView = todolist.map((todo) => (
+    <TodoItem
+      key={todo.id}
+      todo={todo}
+      onToggleComplete={handleToggleComplete}
+      onRemove={handleRemove}
+    />
+  ));
+
+  return <ul className="todoUl">{todolistView}</ul>;
+};
+
+export default TodoList;
